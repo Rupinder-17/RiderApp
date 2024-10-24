@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Modal } from "./Modal";
+import { Modals } from "./demo";
 
 export const IndexRider = () => {
   const direaction = { East: 0, West: 0, South: 0, North: 0 };
@@ -89,6 +90,7 @@ export const IndexRider = () => {
       </div>
       <div>
         <Modal/>
+        {/* <Modals/> */}
       </div>
     </div>
   );
