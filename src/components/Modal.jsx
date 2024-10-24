@@ -9,7 +9,7 @@ export const Modal = () => {
   console.log(list);
 
   const addValue = () => {
-    setModal();
+    setModal(true);
     if (edit) {
       setList(
         list?.map((items) =>
@@ -56,15 +56,23 @@ export const Modal = () => {
       </div>
 
       {modal && (
-        <div className="border mt-4  text-center w-[40%] sm:w-[50%] md:w-[20%] lg:w-[30%] bg-slate-100  mx-auto  absolute left-[620px] -top-16">
+        <div className="border mt-4   text-center w-[30%] sm:w-[50%] md:w-[20%] lg:w-[30%] bg-slate-200  rounded-xl mx-auto  absolute left-[599px] -top-16">
           <input
             type="text"
-            className=" w-96 mt-2 py-2 px-2"
+            className=" w-96 mt-2 py-2 px-1 rounded-md"
             onChange={(e) => {
               setInputValue(e.target.value.trimStart());
             }}
             value={inputValue}
           />
+          <button
+            className="bg-cyan-900 text-white px-4 py-1.5 text-xl"
+            onClick={addValue}
+          >
+            {edit ? "Update" : "Add"}
+          </button>
+          <div className="flex flex-col mt-3 space-y-3">
+
           <label htmlFor="">
             <input
               type="radio"
@@ -75,11 +83,10 @@ export const Modal = () => {
               onChange={(e) => {
                 setSelect(e.target.value);
               }}
-            />
+              />
             Food
           </label>
           <label htmlFor="">
-            Drink
             <input
               type="radio"
               name="catagory"
@@ -89,15 +96,11 @@ export const Modal = () => {
               onChange={(e) => {
                 setSelect(e.target.value);
               }}
-            />
+              />
+            Drink
           </label>
+              </div>
 
-          <button
-            className="bg-cyan-900 text-white px-4 py-1.5 text-xl"
-            onClick={addValue}
-          >
-            {edit ? "Update" : "Add"}
-          </button>
           <div className="text-center py-11">
             <button
               className="bg-cyan-900 text-lg  text-white px-6 py-1 rounded-md"
@@ -118,8 +121,11 @@ export const Modal = () => {
           <ul className="px-3">
             {FoodItem?.map((item, index) => {
               return (
-                <li key={index} className="flex gap-11 w-full">
-                  <p className="w-full py-2">{item.data}</p>
+                <li
+                  key={index}
+                  className="flex gap-11  even:bg-cyan-800 even:text-white px-2 rounded-md w-full"
+                >
+                  <p className="w-full  py-2">{item.data}</p>
                   <button onClick={() => handleDelete(item)}>Delete</button>
                   <button
                     onClick={() => {
@@ -143,7 +149,10 @@ export const Modal = () => {
             <ul className="px-3">
               {DrinkItem?.map((item, index) => {
                 return (
-                  <li key={index} className="flex gap-11 w-full">
+                  <li
+                    key={index}
+                    className="flex  even:bg-cyan-800 even:text-white rounded-md px-2 gap-11 w-full"
+                  >
                     <p className="w-full py-2">{item.data}</p>
                     <button onClick={() => handleDelete(item)}>Delete</button>
                     <button
